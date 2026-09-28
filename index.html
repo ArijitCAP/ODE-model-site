@@ -1,0 +1,3567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>ODE Academy | Outcome Deployed Engineer</title>
+
+    <link rel="stylesheet" href="styles.css" />
+
+<style>
+/* =========================================================
+   STUDENT PROFILES / SUCCESS STORIES
+   ========================================================= */
+
+.student-success-section .student-success-intro {
+    max-width: 780px;
+    margin-top: 12px;
+    color: #667085;
+    line-height: 1.7;
+}
+
+.student-success-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 28px;
+}
+
+.student-card {
+    background: #ffffff;
+    border: 1px solid rgba(16, 24, 40, 0.09);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(16, 24, 40, 0.07);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.student-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 42px rgba(16, 24, 40, 0.12);
+    border-color: rgba(16, 24, 40, 0.16);
+}
+
+.student-photo {
+    position: relative;
+    min-height: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f6f8fb 0%, #eef2f6 100%);
+    overflow: hidden;
+}
+
+.student-photo::after {
+    content: "";
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.8);
+    opacity: .8;
+}
+
+.student-photo svg {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    z-index: 1;
+}
+
+.student-card-body {
+    padding: 20px;
+}
+
+.student-category {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #344054;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+}
+
+.student-card h3 {
+    margin: 12px 0 8px;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.student-card p {
+    margin: 0;
+    color: #667085;
+    line-height: 1.65;
+    font-size: 14px;
+}
+
+.student-result {
+    display: block;
+    margin-top: 18px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #1d2939;
+}
+
+.student-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #eaecf0;
+    color: #667085;
+    font-size: 11px;
+}
+
+.student-success-section .success-hero {
+    margin-top: 22px;
+}
+
+.student-success-section .success-badge {
+    display: inline-flex;
+    align-items: center;
+}
+
+@media (max-width: 1200px) {
+    .student-success-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    .student-success-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .student-photo {
+        min-height: 230px;
+    }
+}
+
+
+/* =========================================================
+   STUDENT CATEGORY FILTERS
+   ========================================================= */
+
+.student-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin: 10px 0 4px;
+    padding: 14px;
+    border: 1px solid #e4e7ec;
+    border-radius: 14px;
+    background: #f8fafc;
+}
+
+.student-filter {
+    appearance: none;
+    border: 1px solid #d0d5dd;
+    background: #ffffff;
+    color: #475467;
+    padding: 8px 13px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+.student-filter:hover {
+    border-color: #087fc3;
+    color: #087fc3;
+    transform: translateY(-1px);
+}
+
+.student-filter.active {
+    background: #087fc3;
+    border-color: #087fc3;
+    color: #ffffff;
+    box-shadow: 0 5px 14px rgba(8, 127, 195, .16);
+}
+
+.student-filter:focus-visible {
+    outline: 3px solid rgba(8, 127, 195, .18);
+    outline-offset: 2px;
+}
+
+.student-card.is-filtered-out {
+    display: none;
+}
+
+@media (max-width: 760px) {
+    .student-filters {
+        gap: 7px;
+        padding: 11px;
+    }
+
+    .student-filter {
+        font-size: 10px;
+        padding: 7px 10px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                S
+            </div>
+
+            <div>
+                <div class="brand-name">
+                    sogeti
+                </div>
+
+                <div class="brand-sub">
+                    Part of Capgemini
+                </div>
+            </div>
+
+        </div>
+
+
+        <nav class="nav">
+
+            <a href="#home" class="nav-item active">
+                <span class="nav-icon">⌂</span>
+                <span>Home</span>
+            </a>
+
+            <a href="#what-is-ode" class="nav-item">
+                <span class="nav-icon">✦</span>
+                <span>What is an ODE?</span>
+            </a>
+
+            <a href="#pathways" class="nav-item">
+                <span class="nav-icon">◇</span>
+                <span>Learning Pathways</span>
+            </a>
+
+            <a href="#gap-matrix" class="nav-item">
+                <span class="nav-icon">▦</span>
+                <span>Gap Matrix</span>
+            </a>
+
+            <a href="#curriculum" class="nav-item">
+                <span class="nav-icon">▱</span>
+                <span>Curriculum</span>
+            </a>
+
+            <a href="#journey" class="nav-item">
+                <span class="nav-icon">➜</span>
+                <span>Learning Journey</span>
+            </a>
+
+            <a href="#success" class="nav-item">
+                <span class="nav-icon">★</span>
+                <span>Success Stories</span>
+            </a>
+
+            <a href="#faq" class="nav-item">
+                <span class="nav-icon">?</span>
+                <span>Resources & FAQ</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="confidential">
+                Company Confidential
+            </div>
+
+            <div class="user-mini">
+
+                <div class="avatar">
+                    Hi
+                </div>
+
+                <div>
+                    <strong>ODE Portal</strong>
+                    <span>Sogeti India</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main">
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div class="search">
+
+                <span>⌕</span>
+
+                <input
+                    type="text"
+                    placeholder="Search ODE resources..."
+                />
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <span class="top-link">
+                    Help
+                </span>
+
+                <span class="top-link">
+                    About ODE
+                </span>
+
+                <div class="top-avatar">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M6.75 6.5C6.75 3.6005 9.1005 1.25 12 1.25C14.8995 1.25 17.25 3.6005 17.25 6.5C17.25 9.3995 14.8995 11.75 12 11.75C9.1005 11.75 6.75 9.3995 6.75 6.5ZM4.25 18.5714C4.25 15.6325 6.63249 13.25 9.57143 13.25H14.4286C17.3675 13.25 19.75 15.6325 19.75 18.5714C19.75 20.8792 17.8792 22.75 15.5714 22.75H8.42857C6.12081 22.75 4.25 20.8792 4.25 18.5714Z"
+            fill="#ffffff"
+        />
+    </svg>
+</div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             1. HERO
+        ================================================== -->
+
+        <section id="home" class="hero">
+
+            <div class="hero-copy">
+
+                <span class="eyebrow hero-eyebrow">
+                    Sogeti India · ODE Fulfilment
+                </span>
+
+                <h1>
+                    Become an
+                    <span>Outcome Deployed Engineer</span>
+                </h1>
+
+                <p>
+                    Build the engineering, AI & data, client-centric
+                    and ownership capabilities needed to take ideas
+                    from discovery to deployed outcomes.
+                </p>
+
+                <p class="hero-tagline">
+                    Right here. Right now.
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <a href="#pathways" class="primary-btn">
+                        Explore Pathways
+                    </a>
+
+                    <a href="#eligibility" class="secondary-btn">
+                        Check Your Eligibility
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-visual">
+
+                <div class="orb orb-one"></div>
+                <div class="orb orb-two"></div>
+
+                <div class="hero-grid-lines"></div>
+
+
+                <div class="robot">
+
+                    <div class="robot-head">
+
+                        <span class="eye"></span>
+                        <span class="eye"></span>
+
+                        <div class="smile"></div>
+
+                    </div>
+
+                    <div class="robot-body"></div>
+
+                    <div class="robot-arm left"></div>
+                    <div class="robot-arm right"></div>
+
+                </div>
+
+
+                <div class="floating-card">
+
+                    <span class="pulse"></span>
+
+                    <div>
+                        <strong>Right here.</strong>
+                        <small>Right now.</small>
+                    </div>
+
+                </div>
+
+
+                <div class="hero-stat-card">
+
+                    <strong>ODE Academy</strong>
+
+                    <span>
+                        Learn → Apply → Build
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MISSION STRIP
+        ================================================== -->
+
+        <section class="mission-strip">
+
+            <div class="mission-item">
+                <strong>Engineering</strong>
+                <span>Build production solutions</span>
+            </div>
+
+            <div class="mission-item">
+                <strong>AI & Data</strong>
+                <span>Use modern AI capabilities</span>
+            </div>
+
+            <div class="mission-item">
+                <strong>Client Centric</strong>
+                <span>Understand the problem first</span>
+            </div>
+
+            <div class="mission-item">
+                <strong>Ownership</strong>
+                <span>Own the outcome end-to-end</span>
+            </div>
+
+        </section>
+
+
+
+
+
+
+
+        <!-- =================================================
+             2. WHAT IS AN ODE?
+        ================================================== -->
+
+        <section id="what-is-ode" class="section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        The role explained
+                    </span>
+
+                    <h2>
+                        What is an ODE?
+                    </h2>
+
+                </div>
+
+                <span class="section-meta">
+                    A senior technical role
+                </span>
+
+            </div>
+
+
+            <div class="ode-definition-grid">
+
+                <div class="ode-definition-card">
+
+                    <div class="large-icon">
+                        ◇
+                    </div>
+
+                    <h3>
+                        Outcome Deployed Engineer
+                    </h3>
+
+                    <p>
+                        An ODE combines strong engineering fundamentals
+                        with AI & data capabilities, customer understanding
+                        and end-to-end ownership.
+                    </p>
+
+                    <div class="role-note">
+                        Senior · Technical · Client-facing
+                    </div>
+
+                </div>
+
+
+                <div class="pillar-grid">
+
+                    <article class="pillar-card">
+
+                        <span class="pillar-number">
+                            01
+                        </span>
+
+                        <div class="pillar-icon">
+                            ⚙
+                        </div>
+
+                        <h3>
+                            Engineering
+                        </h3>
+
+                        <p>
+                            Build reliable, scalable and production-ready
+                            software solutions.
+                        </p>
+
+                    </article>
+
+
+                    <article class="pillar-card">
+
+                        <span class="pillar-number">
+                            02
+                        </span>
+
+                        <div class="pillar-icon">
+                            ✦
+                        </div>
+
+                        <h3>
+                            AI & Data
+                        </h3>
+
+                        <p>
+                            Apply AI, data and emerging technology to
+                            real customer problems.
+                        </p>
+
+                    </article>
+
+
+                    <article class="pillar-card">
+
+                        <span class="pillar-number">
+                            03
+                        </span>
+
+                        <div class="pillar-icon">
+                            ◎
+                        </div>
+
+                        <h3>
+                            Client Centric
+                        </h3>
+
+                        <p>
+                            Understand customer needs and translate
+                            them into actionable solution approaches.
+                        </p>
+
+                    </article>
+
+
+                    <article class="pillar-card">
+
+                        <span class="pillar-number">
+                            04
+                        </span>
+
+                        <div class="pillar-icon">
+                            ↗
+                        </div>
+
+                        <h3>
+                            Ownership
+                        </h3>
+
+                        <p>
+                            Take responsibility from discovery through
+                            delivery and measurable outcome.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+
+            <!-- DAY IN THE LIFE -->
+
+            <div class="life-card">
+
+                <div>
+
+                    <span class="eyebrow">
+                        Day in the life
+                    </span>
+
+                    <h3>
+                        What does an ODE actually own?
+                    </h3>
+
+                </div>
+
+
+                <div class="life-flow">
+
+                    <div class="life-step">
+                        <span>01</span>
+                        <strong>Discover</strong>
+                        <small>Understand the problem</small>
+                    </div>
+
+                    <b>→</b>
+
+                    <div class="life-step">
+                        <span>02</span>
+                        <strong>Design</strong>
+                        <small>Shape the solution</small>
+                    </div>
+
+                    <b>→</b>
+
+                    <div class="life-step">
+                        <span>03</span>
+                        <strong>Build</strong>
+                        <small>Engineer the product</small>
+                    </div>
+
+                    <b>→</b>
+
+                    <div class="life-step">
+                        <span>04</span>
+                        <strong>Deploy</strong>
+                        <small>Deliver the outcome</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             3. WHY NOW
+        ================================================== -->
+
+        <section id="market" class="section market-context">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        Market context
+                    </span>
+
+                    <h2>
+                        Why now?
+                    </h2>
+
+                </div>
+
+                <span class="section-meta">
+                    The opportunity is evolving
+                </span>
+
+            </div>
+
+
+            <div class="why-now-grid">
+
+                <div class="why-now-main">
+
+                    <span class="eyebrow">
+                        From skills to outcomes
+                    </span>
+
+                    <h3>
+                        The market is asking for broader
+                        engineering capability.
+                    </h3>
+
+                    <p>
+                        Modern delivery increasingly brings together
+                        software engineering, AI, data, cloud and
+                        customer-facing solution thinking.
+                    </p>
+
+                    <p>
+                        The ODE model is designed to help build that
+                        combination through targeted capability development.
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span class="stat-label">
+                        ODE demand signal
+                    </span>
+
+                    <strong>
+                        700%
+                    </strong>
+
+                    <span>
+                        increase in ODE roles
+                    </span>
+
+                    <small>
+                        Based on the internal market context
+                        referenced in the ODE material.
+                    </small>
+
+                </div>
+
+
+                <div class="stat-card dark">
+
+                    <span class="stat-label">
+                        Fulfilment
+                    </span>
+
+                    <strong>
+                        Gap
+                    </strong>
+
+                    <span>
+                        between demand and available capability
+                    </span>
+
+                    <small>
+                        The academy provides a structured route
+                        for closing identified gaps.
+                    </small>
+
+                </div>
+
+
+                <div class="stat-card orange">
+
+                    <span class="stat-label">
+                        External hiring
+                    </span>
+
+                    <strong>
+                        ARC
+                    </strong>
+
+                    <span>
+                        premium for external hires
+                    </span>
+
+                    <small>
+                        An additional market consideration for
+                        building internal supply.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            
+
+        </section>
+
+
+
+        <!-- =================================================
+             4. UPSKILLING PATHWAYS
+        ================================================== -->
+
+        <section id="pathways" class="section pathways-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        Augment only what's missing
+                    </span>
+
+                    <h2>
+                        Upskilling pathways
+                    </h2>
+
+                </div>
+
+                <span class="section-meta">
+                    "Lego Block" model
+                </span>
+
+            </div>
+
+
+            <div class="pathway-intro">
+
+                <div>
+
+                    <h3>
+                        Build your ODE capability from where you are.
+                    </h3>
+
+                    <p>
+                        People can enter the ODE journey from adjacent
+                        roles. The academy adds only the capability blocks
+                        they need instead of forcing everyone through
+                        the same sequence.
+                    </p>
+
+                </div>
+
+
+                <div class="lego-flow">
+
+                    <span>Identify gaps</span>
+                    <b>→</b>
+                    <span>Learn</span>
+                    <b>→</b>
+                    <span>Apply</span>
+                    <b>→</b>
+                    <span>Build</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="pathway-grid">
+
+                <article
+                    class="pathway selectable-path"
+                    data-profile="engineering"
+                >
+
+                    <div class="path-icon">
+                        ◇
+                    </div>
+
+                    <span class="path-number">
+                        ROUTE 01
+                    </span>
+
+                    <h3>
+                        From Engineering
+                    </h3>
+
+                    <p>
+                        Software engineers already bring the engineering
+                        spine. Add applied AI, retrieval, agents, cloud
+                        deployment and client-facing discovery.
+                    </p>
+
+                    <strong>
+                        Result · Full deployments
+                    </strong>
+
+                </article>
+
+
+                <article
+                    class="pathway selectable-path"
+                    data-profile="data"
+                >
+
+                    <div class="path-icon">
+                        ▤
+                    </div>
+
+                    <span class="path-number">
+                        ROUTE 02
+                    </span>
+
+                    <h3>
+                        From Data
+                    </h3>
+
+                    <p>
+                        Data engineers bring pipelines, infrastructure
+                        and data skills. Add model integration,
+                        application engineering and product judgment.
+                    </p>
+
+                    <strong>
+                        Result · Full deployments
+                    </strong>
+
+                </article>
+
+
+                <article
+                    class="pathway selectable-path"
+                    data-profile="architecture"
+                >
+
+                    <div class="path-icon">
+                        ⌘
+                    </div>
+
+                    <span class="path-number">
+                        ROUTE 03
+                    </span>
+
+                    <h3>
+                        From Architecture
+                    </h3>
+
+                    <p>
+                        Solution architects already scope and design.
+                        Add hands-on coding and AI pattern implementation
+                        at scale.
+                    </p>
+
+                    <strong>
+                        Result · Full deployments with support
+                    </strong>
+
+                </article>
+
+
+                <article
+                    class="pathway selectable-path"
+                    data-profile="consulting"
+                >
+
+                    <div class="path-icon">
+                        ▣
+                    </div>
+
+                    <span class="path-number">
+                        ROUTE 04
+                    </span>
+
+                    <h3>
+                        From Consulting
+                    </h3>
+
+                    <p>
+                        Consultants bring strong client relationships.
+                        Add engineering and AI foundations to lead
+                        delivery.
+                    </p>
+
+                    <strong>
+                        Result · Full deployments with support
+                    </strong>
+
+                </article>
+
+            </div>
+
+
+            <div class="selected-pathway" id="selectedPathway">
+
+                <div class="selected-pathway-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <span class="eyebrow">
+                        Your route
+                    </span>
+
+                    <h3>
+                        Select a pathway to see the recommended
+                        capability blocks.
+                    </h3>
+
+                    <p>
+                        Choose one of the four routes above.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+<!-- =================================================
+     OPEN-SOURCE PERSONAS
+================================================== -->
+
+<section class="section persona-section" id="personas">
+
+    <div class="persona-panel">
+
+        <h2>Open-Source Personas</h2>
+
+<div class="persona-grid">
+
+    <!-- SOFTWARE ENGINEER -->
+    <article class="persona-card">
+        <input type="checkbox" id="persona-software" class="persona-checkbox">
+
+        <label for="persona-software" class="persona-summary">
+            <div class="persona-avatar">
+                <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="60" cy="60" r="56" fill="#087fc3"/>
+                    <circle cx="60" cy="46" r="19" fill="#c98d6b"/>
+                    <path d="M41 45c1-18 13-27 20-27 13 0 22 10 22 27-7-6-13-9-22-9-8 0-14 3-20 9z" fill="#2d2420"/>
+                    <circle cx="53" cy="47" r="2.2" fill="#173247"/>
+                    <circle cx="67" cy="47" r="2.2" fill="#173247"/>
+                    <path d="M54 58c4 3 8 3 12 0" fill="none" stroke="#633f35" stroke-width="2.2" stroke-linecap="round"/>
+                    <path d="M31 103c3-25 13-37 29-37s26 12 29 37" fill="#174d73"/>
+                    <path d="M48 68l12 12 12-12" fill="#ffffff" opacity=".9"/>
+                </svg>
+            </div>
+
+            <h3>Software Engineer</h3>
+
+            <span class="persona-toggle">+</span>
+        </label>
+
+        <div class="persona-resources">
+            <a href="https://www.youtube.com/results?search_query=software+engineering+tutorial"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="resource-link youtube-link">
+
+                <span class="resource-icon">▶</span>
+
+                <span>
+                    <strong>YouTube</strong>
+                    <small>Software Engineering Tutorials</small>
+                </span>
+            </a>
+
+            <a href="https://www.udemy.com/courses/search/?q=software%20engineering"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="resource-link udemy-link">
+
+                <span class="resource-icon">U</span>
+
+                <span>
+                    <strong>Udemy</strong>
+                    <small>Software Engineering Courses</small>
+                </span>
+            </a>
+        </div>
+    </article>
+
+
+    <!-- DATA ENGINEER -->
+    <article class="persona-card">
+        <input type="checkbox" id="persona-data" class="persona-checkbox">
+
+        <label for="persona-data" class="persona-summary">
+            <div class="persona-avatar">
+                <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="60" cy="60" r="56" fill="#16b9d8"/>
+                    <circle cx="60" cy="46" r="19" fill="#9f674d"/>
+                    <path d="M41 45c1-18 13-27 20-27 13 0 22 10 22 27-7-6-13-9-22-9-8 0-14 3-20 9z" fill="#201a18"/>
+                    <circle cx="53" cy="47" r="2.2" fill="#173247"/>
+                    <circle cx="67" cy="47" r="2.2" fill="#173247"/>
+                    <path d="M54 58c4 3 8 3 12 0" fill="none" stroke="#633f35" stroke-width="2.2" stroke-linecap="round"/>
+                    <path d="M31 103c3-25 13-37 29-37s26 12 29 37" fill="#0a709f"/>
+                    <path d="M48 68l12 12 12-12" fill="#ffffff" opacity=".9"/>
+                </svg>
+            </div>
+
+            <h3>Data Engineer</h3>
+
+            <span class="persona-toggle">+</span>
+        </label>
+
+        <div class="persona-resources">
+            <a href="https://www.youtube.com/results?search_query=data+engineering+tutorial"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="resource-link youtube-link">
+
+                <span class="resource-icon">▶</span>
+
+                <span>
+                    <strong>YouTube</strong>
+                    <small>Data Engineering Tutorials</small>
+                </span>
+            </a>
+
+            <a href="https://www.udemy.com/courses/search/?q=data%20engineering"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="resource-link udemy-link">
+
+                <span class="resource-icon">U</span>
+
+                <span>
+                    <strong>Udemy</strong>
+                    <small>Data Engineering Courses</small>
+                </span>
+            </a>
+        </div>
+    </article>
+
+
+    <!-- AI AND GEN AI -->
+    <article class="persona-card">
+        <input type="checkbox" id="persona-ai" class="persona-checkbox">
+
+        <label for="persona-ai" class="persona-summary">
+            <div class="persona-avatar">
+                <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="60" cy="60" r="56" fill="#0a91bd"/>
+                    <circle cx="60" cy="46" r="19" fill="#b97858"/>
+                    <path d="M40 46c0-18 9-28 20-28s20 10 20 28c-5-7-12-11-20-11S45 39 40 46z" fill="#29201d"/>
+                    <circle cx="53" cy="47" r="2.2" fill="#173247"/>
+                    <circle cx="67" cy="47" r="2.2" fill="#173247"/>
+                    <path d="M54 58c4 3 8 3 12 0" fill="none" stroke="#633f35" stroke-width="2.2" stroke-linecap="round"/>
+                    <path d="M31 103c3-25 13-37 29-37s26 12 29 37" fill="#2a9f75"/>
+                    <path d="M48 68l12 12 12-12" fill="#ffffff" opacity=".9"/>
+                </svg>
+            </div>
+
+            <h3>AI and Gen AI</h3>
+
+            <span class="persona-toggle">+</span>
+        </label>
+
+        <div class="persona-resources">
+            <a href="https://www.youtube.com/results?search_query=generative+AI+tutorial"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="resource-link youtube-link">
+
+                <span class="resource-icon">▶</span>
+
+                <span>
+                    <strong>YouTube</strong>
+                    <small>Generative AI Tutorials</small>
+                </span>
+            </a>
+
+            <a href="https://www.udemy.com/courses/search/?q=generative%20AI"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="resource-link udemy-link">
+
+                <span class="resource-icon">U</span>
+
+                <span>
+                    <strong>Udemy</strong>
+                    <small>Generative AI Courses</small>
+                </span>
+            </a>
+        </div>
+    </article>
+
+</div>
+
+    </div>
+
+</section>
+
+
+
+        <!-- =================================================
+             5. GAP MATRIX
+        ================================================== -->
+
+        <section id="gap-matrix" class="section gap-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        Self-assessment
+                    </span>
+
+                    <h2>
+                        Skills Gap Self-Assessment
+                    </h2>
+
+                </div>
+
+                <span class="section-meta">
+                    The ODE Gap Matrix
+                </span>
+
+            </div>
+
+
+            <div class="assessment-header">
+
+                <div>
+
+                    <h3>
+                        Where are you starting from?
+                    </h3>
+
+                    <p>
+                        Select your current profile to see which capability
+                        blocks you already have and which ones you may
+                        need to build.
+                    </p>
+
+                </div>
+
+
+                <div class="profile-selector">
+
+                    <button
+                        class="profile-btn active"
+                        data-profile="engineering"
+                    >
+                        Software Engineer
+                    </button>
+
+                    <button
+                        class="profile-btn"
+                        data-profile="data"
+                    >
+                        Data Engineer
+                    </button>
+
+                    <button
+                        class="profile-btn"
+                        data-profile="ml"
+                    >
+                        ML Engineer
+                    </button>
+
+                    <button
+                        class="profile-btn"
+                        data-profile="architecture"
+                    >
+                        Solution Architect
+                    </button>
+
+                    <button
+                        class="profile-btn"
+                        data-profile="consulting"
+                    >
+                        Consultant
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="matrix-wrap">
+
+                <table class="matrix">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Starting profile
+                            </th>
+
+                            <th>
+                                SW eng
+                            </th>
+
+                            <th>
+                                Data &
+                                pipelines
+                            </th>
+
+                            <th>
+                                Applied
+                                AI
+                            </th>
+
+                            <th>
+                                Agentic
+                                build
+                            </th>
+
+                            <th>
+                                Cloud
+                                deploy
+                            </th>
+
+                            <th>
+                                AI patterns
+                                & evals
+                            </th>
+
+                            <th>
+                                Client
+                                discovery
+                            </th>
+
+                            <th>
+                                Comms &
+                                ownership
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr data-row="engineering">
+
+                            <th>
+                                Software / Backend Engineer
+                            </th>
+
+                            <td class="have">have</td>
+                            <td class="build">build</td>
+                            <td class="build">build</td>
+                            <td class="build">build</td>
+                            <td class="have">have</td>
+                            <td class="build">build</td>
+                            <td class="build">build</td>
+                            <td class="build">build</td>
+
+                        </tr>
+
+
+                        <tr data-row="data">
+
+                            <th>
+                                Data Engineer
+                            </th>
+
+                            <td class="have">have</td>
+                            <td class="have">have</td>
+                            <td class="build">build</td>
+                            <td class="build">build</td>
+                            <td class="build">build</td>
+                            <td class="build">build</td>
+                            <td class="build">build</td>
+                            <td class="build">build</td>
+
+                        </tr>
+
+
+                        <tr data-row="ml">
+
+                            <th>
+                                ML Engineer
+                            </th>
+
+                            <td class="build">build</td>
+                            <td class="have">have</td>
+                            <td class="have">have</td>
+                            <td class="have">have</td>
+                            <td class="build">build</td>
+                            <td class="have">have</td>
+                            <td class="build">build</td>
+                            <td class="build">build</td>
+
+                        </tr>
+
+
+                        <tr data-row="architecture">
+
+                            <th>
+                                Solution Architect
+                            </th>
+
+                            <td class="have">have</td>
+                            <td class="build">build</td>
+                            <td class="build">build</td>
+                            <td class="build">build</td>
+                            <td class="have">have</td>
+                            <td class="build">build</td>
+                            <td class="have">have</td>
+                            <td class="have">have</td>
+
+                        </tr>
+
+
+                        <tr data-row="consulting">
+
+                            <th>
+                                Consultant
+                            </th>
+
+                            <td class="build">build</td>
+                            <td class="build">build</td>
+                            <td class="build">build</td>
+                            <td class="build">build</td>
+                            <td class="build">build</td>
+                            <td class="build">build</td>
+                            <td class="have">have</td>
+                            <td class="have">have</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+
+                <div class="legend">
+
+                    <span>
+                        <i class="legend-have"></i>
+                        Already has this block
+                    </span>
+
+                    <span>
+                        <i class="legend-build"></i>
+                        Gap to build in the academy
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PERSONALIZED RECOMMENDATION -->
+
+            <div class="recommendation-card">
+
+                <div class="recommendation-icon">
+                    ✦
+                </div>
+
+                <div class="recommendation-content">
+
+                    <span class="eyebrow">
+                        Personalized recommendation
+                    </span>
+
+                    <h3 id="recommendationTitle">
+                        Recommended modules for Software Engineer
+                    </h3>
+
+                    <p id="recommendationText">
+                        Focus on Applied AI, Agentic Build, AI Patterns
+                        & Evals, Client Discovery and Communications &
+                        Ownership.
+                    </p>
+
+                    <div
+                        class="recommendation-tags"
+                        id="recommendationTags"
+                    >
+
+                        <span>Applied AI</span>
+                        <span>Agentic Build</span>
+                        <span>AI Evals</span>
+                        <span>Client Discovery</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             6. CURRICULUM & MODULES
+        ================================================== -->
+
+        <section id="curriculum" class="section academy-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        Build capability
+                    </span>
+
+                    <h2>
+                        Curriculum & Modules
+                    </h2>
+
+                </div>
+
+                <span class="section-meta">
+                    Learn as you need · Curriculum evolves
+                </span>
+
+            </div>
+
+
+            <div class="curriculum-banner">
+
+                <div>
+
+                    <span class="eyebrow">
+                        Foundation & setup
+                    </span>
+
+                    <h3>
+                        A modular curriculum rather than
+                        one fixed sequence.
+                    </h3>
+
+                    <p>
+                        Learners progress through the capability blocks
+                        identified through their self-assessment and
+                        pathway.
+                    </p>
+
+                </div>
+
+
+                <div class="duration-cards">
+
+                    <div>
+                        <strong>A</strong>
+                        <span>14 days</span>
+                    </div>
+
+                    <div>
+                        <strong>B</strong>
+                        <span>21 days</span>
+                    </div>
+
+                    <div>
+                        <strong>C</strong>
+                        <span>28 days</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="module-grid">
+
+                <article class="module-card orange">
+
+                    <span>01</span>
+
+                    <h4>
+                        FDE Mindset & Customer Discovery
+                    </h4>
+
+                    <p>
+                        Understand customer problems, ask the right
+                        questions and turn business needs into
+                        solution hypotheses.
+                    </p>
+
+                </article>
+
+
+                <article class="module-card orange">
+
+                    <span>02</span>
+
+                    <h4>
+                        Solution Architecture Fundamentals
+                    </h4>
+
+                    <p>
+                        Modern architecture, API-first thinking,
+                        integration, security and scalability.
+                    </p>
+
+                </article>
+
+
+                <article class="module-card green">
+
+                    <span>03</span>
+
+                    <h4>
+                        AI & GenAI Fundamentals
+                    </h4>
+
+                    <p>
+                        LLMs, prompting, copilots, AI use cases
+                        and responsible AI principles.
+                    </p>
+
+                </article>
+
+
+                <article class="module-card green">
+
+                    <span>04</span>
+
+                    <h4>
+                        Enterprise AI Solutions
+                    </h4>
+
+                    <p>
+                        RAG, enterprise knowledge assistants,
+                        agentic AI, governance and AI patterns.
+                    </p>
+
+                </article>
+
+
+                <article class="module-card green">
+
+                    <span>05</span>
+
+                    <h4>
+                        Data & Platform Foundations
+                    </h4>
+
+                    <p>
+                        Data architecture, structured and unstructured
+                        data, pipelines and cloud data services.
+                    </p>
+
+                </article>
+
+
+                <article class="module-card green">
+
+                    <span>06</span>
+
+                    <h4>
+                        Cloud Deployment & DevOps
+                    </h4>
+
+                    <p>
+                        CI/CD, containers, Kubernetes concepts,
+                        IaC, monitoring and secure deployment.
+                    </p>
+
+                </article>
+
+
+                <article class="module-card white">
+
+                    <span>07</span>
+
+                    <h4>
+                        Product Thinking & Customer Engagement
+                    </h4>
+
+                    <p>
+                        MVP definition, prioritization, business value,
+                        storytelling and executive communication.
+                    </p>
+
+                </article>
+
+
+                <article class="module-card white">
+
+                    <span>08</span>
+
+                    <h4>
+                        ODE Simulation & Capstone
+                    </h4>
+
+                    <p>
+                        End-to-end scenario covering discovery,
+                        architecture, AI strategy, deployment
+                        and value assessment.
+                    </p>
+
+                </article>
+
+            </div>
+
+
+            <div class="syllabus-download">
+
+                <div>
+
+                    <strong>
+                        Want the complete module breakdown?
+                    </strong>
+
+                    <span>
+                        Downloadable syllabus and module timeline
+                    </span>
+
+                </div>
+
+                <button class="download-btn">
+                    Download syllabus →
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             7. LEARNING FORMAT & JOURNEY
+        ================================================== -->
+
+        <section class="section journey-section" id="learning-journey">
+
+    <div class="section-heading">
+        <div>
+            <span class="eyebrow">HOW THE PROGRAM WORKS</span>
+            <h2>Learning Format & Journey</h2>
+        </div>
+    </div>
+
+
+    <!-- =====================================================
+         LEARNING FORMAT
+    ====================================================== -->
+
+    <div class="learning-format-grid">
+
+        <div class="learning-format-card">
+            <div class="learning-format-number">01</div>
+
+            <h3>Mentorship</h3>
+
+            <p>
+                Learn with guidance from academy leads
+                and experienced mentors.
+            </p>
+        </div>
+
+
+        <div class="learning-format-card">
+            <div class="learning-format-number">02</div>
+
+            <h3>Hands-on Scenarios</h3>
+
+            <p>
+                Apply concepts through realistic
+                engineering, AI and customer scenarios.
+            </p>
+        </div>
+
+
+        <div class="learning-format-card">
+            <div class="learning-format-number">03</div>
+
+            <h3>End-to-End Build</h3>
+
+            <p>
+                Bring the capabilities together in a
+                complete solution.
+            </p>
+        </div>
+
+
+        <div class="learning-format-card">
+            <div class="learning-format-number">04</div>
+
+            <h3>Readiness Evaluation</h3>
+
+            <p>
+                Demonstrate the ability to take an
+                outcome from discovery through
+                deployment.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         LEARNING JOURNEY / 8 STEP ROW
+    ====================================================== -->
+
+    <div class="ode-process">
+
+        <div class="process-line"></div>
+
+        <div class="process-step active">
+            <div class="process-number">01</div>
+
+            <div class="process-content">
+                <span class="process-label">START</span>
+                <h3>Assess Demand and Role</h3>
+                <p>
+                    Understand the business demand, role
+                    requirements and expected outcomes.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="process-step">
+            <div class="process-number">02</div>
+
+            <div class="process-content">
+                <span class="process-label">IDENTIFY</span>
+                <h3>Identify Closely Matching Profiles</h3>
+                <p>
+                    Identify people whose existing
+                    experience aligns closely with the
+                    target role.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="process-step active">
+            <div class="process-number">03</div>
+
+            <div class="process-content">
+                <span class="process-label">ASSESS</span>
+                <h3>Assess Skillset and Gap Matrix</h3>
+                <p>
+                    Assess existing capabilities and
+                    identify specific skill gaps.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="process-step">
+            <div class="process-number">04</div>
+
+            <div class="process-content">
+                <span class="process-label">BUILD</span>
+                <h3>Assign Training</h3>
+                <p>
+                    Assign targeted training based on
+                    identified capability gaps.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="process-step">
+            <div class="process-number">05</div>
+
+            <div class="process-content">
+                <span class="process-label">APPLY</span>
+                <h3>Deliver Capstone Project</h3>
+                <p>
+                    Apply the learning through an end-to-end
+                    capstone project.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="process-step">
+            <div class="process-number">06</div>
+
+            <div class="process-content">
+                <span class="process-label">VALIDATE</span>
+                <h3>Simulation Interviews</h3>
+                <p>
+                    Validate technical, client-facing and
+                    problem-solving readiness.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="process-step">
+            <div class="process-number">07</div>
+
+            <div class="process-content">
+                <span class="process-label">DEPLOY</span>
+                <h3>Deploy to Role</h3>
+                <p>
+                    Deploy the ready candidate into the
+                    identified role and engagement.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="process-step">
+            <div class="process-number">08</div>
+
+            <div class="process-content">
+                <span class="process-label">IMPROVE</span>
+                <h3>Assess Feedback</h3>
+                <p>
+                    Capture feedback and continuously
+                    improve readiness and outcomes.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+        <!-- =================================================
+             8. SUCCESS STORIES
+        ================================================== -->
+
+        <!-- =================================================
+             8. SUCCESS STORIES
+        ================================================== -->
+
+        <section id="success" class="section success-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        Build over time
+                    </span>
+
+                    <h2>
+                        Success Stories & Outcomes
+                    </h2>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="meet-family-btn"
+                    id="meetFamilyBtn"
+                    aria-controls="familyDetails"
+                    aria-expanded="false"
+                >
+                    Meet the Family
+                    <span>→</span>
+                </button>
+
+            </div>
+
+
+            <div class="success-hero">
+
+                <div>
+
+                    <div class="success-badge">
+                        FIRST COHORT
+                    </div>
+
+                    <h3>
+                        The first ODE cohort will
+                        tell the story.
+                    </h3>
+
+                    <p>
+                        As learners complete the academy,
+                        this space will grow with profiles,
+                        testimonials and deployment case studies.
+                    </p>
+
+                </div>
+
+
+                <div class="cohort-number">
+
+                    <span>
+                        Target
+                    </span>
+
+                    <strong>
+                        10
+                    </strong>
+
+                    <small>
+                        ODEs
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="success-grid">
+
+                <article class="success-card">
+
+                    <div class="success-placeholder">
+                        01
+                    </div>
+
+                    <h3>
+                        Learner Profile
+                    </h3>
+
+                    <p>
+                        Cohort member profile and their journey
+                        from starting capability to ODE readiness.
+                    </p>
+
+                    <span>
+                        Coming Soon
+                    </span>
+
+                </article>
+
+
+                <article class="success-card">
+
+                    <div class="success-placeholder">
+                        02
+                    </div>
+
+                    <h3>
+                        Deployment Story
+                    </h3>
+
+                    <p>
+                        A case study showing how an ODE capability
+                        translated into a customer outcome.
+                    </p>
+
+                    <span>
+                        Coming Soon
+                    </span>
+
+                </article>
+
+
+                <article class="success-card">
+
+                    <div class="success-placeholder">
+                        03
+                    </div>
+
+                    <h3>
+                        Testimonial
+                    </h3>
+
+                    <p>
+                        Learner, mentor or stakeholder perspective
+                        on the ODE journey.
+                    </p>
+
+                    <span>
+                        Coming Soon
+                    </span>
+
+                </article>
+
+            </div>
+
+
+            <!-- FAMILY DETAILS: revealed by Meet the Family -->
+            <div id="familyDetails" hidden>
+
+            <!-- =================================================
+                 BATCH 1
+            ================================================== -->
+
+            <div
+                class="batch-card"
+                id="batch1Card"
+                role="button"
+                tabindex="0"
+                aria-expanded="false"
+                aria-controls="batch1Students"
+            >
+
+                <div class="batch-icon">
+                    B1
+                </div>
+
+                <div class="batch-info">
+                    <span class="batch-label">
+                        ODE ACADEMY
+                    </span>
+
+                    <h3>
+                        Batch 1
+                    </h3>
+
+                    <p>
+                        The first cohort of learners building practical
+                        engineering, AI, data, cloud and client-delivery
+                        capabilities through the ODE journey.
+                    </p>
+                </div>
+
+                <div class="batch-count">
+                    <strong>08</strong>
+                    <span>Students</span>
+                </div>
+
+                <div class="batch-arrow" aria-hidden="true">
+                    +
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 BATCH 1 STUDENTS
+            ================================================== -->
+
+            <div
+                class="batch-students"
+                id="batch1Students"
+                aria-hidden="true"
+            >
+
+                <div class="batch-students-header">
+                    <div>
+                        <span class="eyebrow">
+                            Batch 1 Profiles
+                        </span>
+
+                        <h3>
+                            Student Details
+                        </h3>
+                    </div>
+
+                    <span class="batch-status">
+                        08 ACTIVE PROFILES
+                    </span>
+                </div>
+
+                <div class="student-filters" aria-label="Filter students by category">
+                    <button type="button" class="student-filter active" data-filter="all" aria-pressed="true">All</button>
+                    <button type="button" class="student-filter" data-filter="software-engineer" aria-pressed="false">Software Engineer</button>
+                    <button type="button" class="student-filter" data-filter="data-engineer" aria-pressed="false">Data Engineer</button>
+                    <button type="button" class="student-filter" data-filter="ai-gen-ai" aria-pressed="false">AI and Gen AI</button>
+                </div>
+
+                            <div class="student-success-grid">
+
+                <article class="student-card" data-category="ai-gen-ai">
+                    <div class="student-photo">
+                        
+<svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" aria-label="Illustration of Aarav Mehta">
+    <circle cx="90" cy="90" r="76" fill="#ffffff" opacity=".75"/>
+    <circle cx="90" cy="69" r="31" fill="#c98d6b"/>
+    <path d="M58 66c2-29 22-42 38-42 22 0 39 15 40 42-10-11-20-17-37-17-16 0-29 6-41 17z" fill="#2f241f"/>
+    <circle cx="79" cy="70" r="3" fill="#202020"/>
+    <circle cx="101" cy="70" r="3" fill="#202020"/>
+    <path d="M82 84c5 4 11 4 16 0" fill="none" stroke="#633f35" stroke-width="3" stroke-linecap="round"/>
+    <path d="M47 150c3-35 20-52 43-52s40 17 43 52" fill="#5b6ee1"/>
+    <path d="M73 103l17 17 17-17" fill="#ffffff" opacity=".85"/>
+    <circle cx="90" cy="142" r="13" fill="#ffffff" opacity=".18"/>
+    <text x="90" y="147" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">AM</text>
+</svg>
+
+                    </div>
+
+                    <div class="student-card-body">
+                        <span class="student-category">AI and Gen AI</span>
+
+                        <h3>Aarav Mehta</h3>
+
+                        <p>Built a practical GenAI assistant and strengthened prompt design, RAG and evaluation skills through the academy.</p>
+
+                        <span class="student-result">
+                            AI Solution Track
+                        </span>
+
+                        <div class="student-meta">
+                            <span>Focus</span>
+                            <strong>Applied AI + RAG</strong>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="student-card" data-category="data-engineer">
+                    <div class="student-photo">
+                        
+<svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" aria-label="Illustration of Ishita Roy">
+    <circle cx="90" cy="90" r="76" fill="#ffffff" opacity=".75"/>
+    <circle cx="90" cy="69" r="31" fill="#b97859"/>
+    <path d="M58 66c2-29 22-42 38-42 22 0 39 15 40 42-10-11-20-17-37-17-16 0-29 6-41 17z" fill="#33251f"/>
+    <circle cx="79" cy="70" r="3" fill="#202020"/>
+    <circle cx="101" cy="70" r="3" fill="#202020"/>
+    <path d="M82 84c5 4 11 4 16 0" fill="none" stroke="#633f35" stroke-width="3" stroke-linecap="round"/>
+    <path d="M47 150c3-35 20-52 43-52s40 17 43 52" fill="#49a078"/>
+    <path d="M73 103l17 17 17-17" fill="#ffffff" opacity=".85"/>
+    <circle cx="90" cy="142" r="13" fill="#ffffff" opacity=".18"/>
+    <text x="90" y="147" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">IR</text>
+</svg>
+
+                    </div>
+
+                    <div class="student-card-body">
+                        <span class="student-category">Data Engineer</span>
+
+                        <h3>Ishita Roy</h3>
+
+                        <p>Converted strong data fundamentals into production-ready pipeline, platform and AI integration capabilities.</p>
+
+                        <span class="student-result">
+                            Data & AI Track
+                        </span>
+
+                        <div class="student-meta">
+                            <span>Focus</span>
+                            <strong>Data + Platform</strong>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="student-card" data-category="software-engineer">
+                    <div class="student-photo">
+                        
+<svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" aria-label="Illustration of Rohan Kapoor">
+    <circle cx="90" cy="90" r="76" fill="#ffffff" opacity=".75"/>
+    <circle cx="90" cy="69" r="31" fill="#c68a67"/>
+    <path d="M58 66c2-29 22-42 38-42 22 0 39 15 40 42-10-11-20-17-37-17-16 0-29 6-41 17z" fill="#221d1a"/>
+    <circle cx="79" cy="70" r="3" fill="#202020"/>
+    <circle cx="101" cy="70" r="3" fill="#202020"/>
+    <path d="M82 84c5 4 11 4 16 0" fill="none" stroke="#633f35" stroke-width="3" stroke-linecap="round"/>
+    <path d="M47 150c3-35 20-52 43-52s40 17 43 52" fill="#e08b4f"/>
+    <path d="M73 103l17 17 17-17" fill="#ffffff" opacity=".85"/>
+    <circle cx="90" cy="142" r="13" fill="#ffffff" opacity=".18"/>
+    <text x="90" y="147" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">RK</text>
+</svg>
+
+                    </div>
+
+                    <div class="student-card-body">
+                        <span class="student-category">Software Engineer</span>
+
+                        <h3>Rohan Kapoor</h3>
+
+                        <p>Applied cloud deployment, CI/CD and container concepts while delivering an end-to-end capstone solution.</p>
+
+                        <span class="student-result">
+                            Cloud Delivery Track
+                        </span>
+
+                        <div class="student-meta">
+                            <span>Focus</span>
+                            <strong>Cloud + DevOps</strong>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="student-card" data-category="software-engineer">
+                    <div class="student-photo">
+                        
+<svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" aria-label="Illustration of Nisha Sharma">
+    <circle cx="90" cy="90" r="76" fill="#ffffff" opacity=".75"/>
+    <circle cx="90" cy="69" r="31" fill="#9f674d"/>
+    <path d="M58 66c2-29 22-42 38-42 22 0 39 15 40 42-10-11-20-17-37-17-16 0-29 6-41 17z" fill="#211a17"/>
+    <circle cx="79" cy="70" r="3" fill="#202020"/>
+    <circle cx="101" cy="70" r="3" fill="#202020"/>
+    <path d="M82 84c5 4 11 4 16 0" fill="none" stroke="#633f35" stroke-width="3" stroke-linecap="round"/>
+    <path d="M47 150c3-35 20-52 43-52s40 17 43 52" fill="#8b5fbf"/>
+    <path d="M73 103l17 17 17-17" fill="#ffffff" opacity=".85"/>
+    <circle cx="90" cy="142" r="13" fill="#ffffff" opacity=".18"/>
+    <text x="90" y="147" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">NS</text>
+</svg>
+
+                    </div>
+
+                    <div class="student-card-body">
+                        <span class="student-category">Software Engineer</span>
+
+                        <h3>Nisha Sharma</h3>
+
+                        <p>Expanded a strong engineering foundation with client discovery, AI patterns and outcome-focused solution design.</p>
+
+                        <span class="student-result">
+                            Engineering Track
+                        </span>
+
+                        <div class="student-meta">
+                            <span>Focus</span>
+                            <strong>Engineering + AI</strong>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="student-card" data-category="ai-gen-ai">
+                    <div class="student-photo">
+                        
+<svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" aria-label="Illustration of Kabir Sen">
+    <circle cx="90" cy="90" r="76" fill="#ffffff" opacity=".75"/>
+    <circle cx="90" cy="69" r="31" fill="#c98b67"/>
+    <path d="M58 66c2-29 22-42 38-42 22 0 39 15 40 42-10-11-20-17-37-17-16 0-29 6-41 17z" fill="#30251f"/>
+    <circle cx="79" cy="70" r="3" fill="#202020"/>
+    <circle cx="101" cy="70" r="3" fill="#202020"/>
+    <path d="M82 84c5 4 11 4 16 0" fill="none" stroke="#633f35" stroke-width="3" stroke-linecap="round"/>
+    <path d="M47 150c3-35 20-52 43-52s40 17 43 52" fill="#3f8ebf"/>
+    <path d="M73 103l17 17 17-17" fill="#ffffff" opacity=".85"/>
+    <circle cx="90" cy="142" r="13" fill="#ffffff" opacity=".18"/>
+    <text x="90" y="147" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">KS</text>
+</svg>
+
+                    </div>
+
+                    <div class="student-card-body">
+                        <span class="student-category">AI and Gen AI</span>
+
+                        <h3>Kabir Sen</h3>
+
+                        <p>Designed a multi-step agent workflow that connected tools, retrieval and structured outputs for a business scenario.</p>
+
+                        <span class="student-result">
+                            Agentic Build Track
+                        </span>
+
+                        <div class="student-meta">
+                            <span>Focus</span>
+                            <strong>Agents + Tools</strong>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="student-card" data-category="software-engineer">
+                    <div class="student-photo">
+                        
+<svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" aria-label="Illustration of Ananya Das">
+    <circle cx="90" cy="90" r="76" fill="#ffffff" opacity=".75"/>
+    <circle cx="90" cy="69" r="31" fill="#b97858"/>
+    <path d="M58 66c2-29 22-42 38-42 22 0 39 15 40 42-10-11-20-17-37-17-16 0-29 6-41 17z" fill="#29201d"/>
+    <circle cx="79" cy="70" r="3" fill="#202020"/>
+    <circle cx="101" cy="70" r="3" fill="#202020"/>
+    <path d="M82 84c5 4 11 4 16 0" fill="none" stroke="#633f35" stroke-width="3" stroke-linecap="round"/>
+    <path d="M47 150c3-35 20-52 43-52s40 17 43 52" fill="#d16b78"/>
+    <path d="M73 103l17 17 17-17" fill="#ffffff" opacity=".85"/>
+    <circle cx="90" cy="142" r="13" fill="#ffffff" opacity=".18"/>
+    <text x="90" y="147" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">AD</text>
+</svg>
+
+                    </div>
+
+                    <div class="student-card-body">
+                        <span class="student-category">Software Engineer</span>
+
+                        <h3>Ananya Das</h3>
+
+                        <p>Strengthened architecture thinking with hands-on implementation, AI solution patterns and deployment considerations.</p>
+
+                        <span class="student-result">
+                            Architecture Track
+                        </span>
+
+                        <div class="student-meta">
+                            <span>Focus</span>
+                            <strong>Architecture + AI</strong>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="student-card" data-category="data-engineer">
+                    <div class="student-photo">
+                        
+<svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" aria-label="Illustration of Vikram Joshi">
+    <circle cx="90" cy="90" r="76" fill="#ffffff" opacity=".75"/>
+    <circle cx="90" cy="69" r="31" fill="#c08360"/>
+    <path d="M58 66c2-29 22-42 38-42 22 0 39 15 40 42-10-11-20-17-37-17-16 0-29 6-41 17z" fill="#2a211d"/>
+    <circle cx="79" cy="70" r="3" fill="#202020"/>
+    <circle cx="101" cy="70" r="3" fill="#202020"/>
+    <path d="M82 84c5 4 11 4 16 0" fill="none" stroke="#633f35" stroke-width="3" stroke-linecap="round"/>
+    <path d="M47 150c3-35 20-52 43-52s40 17 43 52" fill="#4d9a9a"/>
+    <path d="M73 103l17 17 17-17" fill="#ffffff" opacity=".85"/>
+    <circle cx="90" cy="142" r="13" fill="#ffffff" opacity=".18"/>
+    <text x="90" y="147" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">VJ</text>
+</svg>
+
+                    </div>
+
+                    <div class="student-card-body">
+                        <span class="student-category">Data Engineer</span>
+
+                        <h3>Vikram Joshi</h3>
+
+                        <p>Combined analytics experience with applied AI to build a solution that turns enterprise data into useful insights.</p>
+
+                        <span class="student-result">
+                            Data Intelligence Track
+                        </span>
+
+                        <div class="student-meta">
+                            <span>Focus</span>
+                            <strong>Analytics + AI</strong>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="student-card" data-category="software-engineer">
+                    <div class="student-photo">
+                        
+<svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" aria-label="Illustration of Meera Nair">
+    <circle cx="90" cy="90" r="76" fill="#ffffff" opacity=".75"/>
+    <circle cx="90" cy="69" r="31" fill="#a96d52"/>
+    <path d="M58 66c2-29 22-42 38-42 22 0 39 15 40 42-10-11-20-17-37-17-16 0-29 6-41 17z" fill="#241d1a"/>
+    <circle cx="79" cy="70" r="3" fill="#202020"/>
+    <circle cx="101" cy="70" r="3" fill="#202020"/>
+    <path d="M82 84c5 4 11 4 16 0" fill="none" stroke="#633f35" stroke-width="3" stroke-linecap="round"/>
+    <path d="M47 150c3-35 20-52 43-52s40 17 43 52" fill="#d18a4d"/>
+    <path d="M73 103l17 17 17-17" fill="#ffffff" opacity=".85"/>
+    <circle cx="90" cy="142" r="13" fill="#ffffff" opacity=".18"/>
+    <text x="90" y="147" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#ffffff">MN</text>
+</svg>
+
+                    </div>
+
+                    <div class="student-card-body">
+                        <span class="student-category">Software Engineer</span>
+
+                        <h3>Meera Nair</h3>
+
+                        <p>Built stronger customer discovery and communication skills while translating requirements into a deployable technical solution.</p>
+
+                        <span class="student-result">
+                            Client Delivery Track
+                        </span>
+
+                        <div class="student-meta">
+                            <span>Focus</span>
+                            <strong>Discovery + Delivery</strong>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             9. RESOURCES & FAQ
+        ================================================== -->
+
+        <section id="faq" class="section faq-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        Need to know
+                    </span>
+
+                    <h2>
+                        Resources & FAQ
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="faq-layout">
+
+                <div class="faq-list">
+
+
+                    <div class="faq-item">
+
+                        <button class="faq-question">
+
+                            <span>
+                                What does ODE mean?
+                            </span>
+
+                            <b>
+                                +
+                            </b>
+
+                        </button>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                ODE stands for Outcome Deployed Engineer.
+                                It describes a senior technical role that
+                                combines engineering, AI & data, client
+                                centricity and end-to-end ownership.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <button class="faq-question">
+
+                            <span>
+                                Is an ODE an Engineering Manager?
+                            </span>
+
+                            <b>
+                                +
+                            </b>
+
+                        </button>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                No. The ODE is positioned as a senior,
+                                technically structured role focused on
+                                delivering outcomes through engineering,
+                                AI and customer collaboration.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <button class="faq-question">
+
+                            <span>
+                                Do I need to follow every module?
+                            </span>
+
+                            <b>
+                                +
+                            </b>
+
+                        </button>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                The academy follows a modular "learn as
+                                you need" philosophy. Your pathway and
+                                gap assessment help identify the capability
+                                blocks that should be developed.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <button class="faq-question">
+
+                            <span>
+                                Why might YPs find the role challenging?
+                            </span>
+
+                            <b>
+                                +
+                            </b>
+
+                        </button>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                The role brings together technical depth,
+                                customer discovery, AI capabilities and
+                                ownership. Developing breadth across these
+                                areas can require targeted learning and
+                                practical experience.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <button class="faq-question">
+
+                            <span>
+                                What is RAG?
+                            </span>
+
+                            <b>
+                                +
+                            </b>
+
+                        </button>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                RAG stands for Retrieval-Augmented Generation.
+                                It combines information retrieval with an
+                                LLM so that responses can be grounded in
+                                relevant knowledge sources.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <button class="faq-question">
+
+                            <span>
+                                What is agentic AI?
+                            </span>
+
+                            <b>
+                                +
+                            </b>
+
+                        </button>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                Agentic AI refers to systems that can
+                                coordinate tasks, tools and workflows to
+                                accomplish a defined objective rather than
+                                only generating a single response.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="resource-card">
+
+                    <div class="resource-icon">
+                        ?
+                    </div>
+
+                    <span class="eyebrow">
+                        Quick resources
+                    </span>
+
+                    <h3>
+                        Explore the ODE ecosystem
+                    </h3>
+
+                    <p>
+                        Access internal learning platforms, reference
+                        material, glossary content and academy resources.
+                    </p>
+
+
+                    <div class="resource-links">
+
+                        <a href="#">
+                            ODE Glossary
+                            <span>→</span>
+                        </a>
+
+                        <a href="#">
+                            Learning Platforms
+                            <span>→</span>
+                        </a>
+
+                        <a href="#">
+                            Academy Resources
+                            <span>→</span>
+                        </a>
+
+                        <a href="#">
+                            ODE Reference Guide
+                            <span>→</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             10. APPLY / GET INVOLVED
+        ================================================== -->
+
+        <section
+            id="eligibility"
+            class="section apply-section"
+        >
+
+            <div class="apply-card">
+
+                <div class="apply-copy">
+
+                    <span class="eyebrow">
+                        Take the next step
+                    </span>
+
+                    <h2>
+                        Apply / Get Involved
+                    </h2>
+
+                    <p>
+                        Interested in becoming an ODE or helping build
+                        the next cohort? Choose the route that applies
+                        to you.
+                    </p>
+
+                </div>
+
+
+                <div class="apply-options">
+
+                    <button class="apply-option">
+
+                        <span class="apply-icon">
+                            ◇
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Self-nomination
+                            </strong>
+
+                            <small>
+                                Explore your eligibility and nominate
+                                yourself for the academy.
+                            </small>
+
+                        </div>
+
+                        <b>
+                            →
+                        </b>
+
+                    </button>
+
+
+                    <button class="apply-option">
+
+                        <span class="apply-icon">
+                            ▣
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Manager nomination
+                            </strong>
+
+                            <small>
+                                Managers can nominate candidates for
+                                the ODE development journey.
+                            </small>
+
+                        </div>
+
+                        <b>
+                            →
+                        </b>
+
+                    </button>
+
+
+                    <button class="apply-option">
+
+                        <span class="apply-icon">
+                            @
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Contact the Academy
+                            </strong>
+
+                            <small>
+                                Connect with the academy team for
+                                questions and guidance.
+                            </small>
+
+                        </div>
+
+                        <b>
+                            →
+                        </b>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CLIENT ZERO / INTERNAL MARKET
+        ================================================== -->
+
+        <section class="section clients-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        Client zero & market development
+                    </span>
+
+                    <h2>
+                        Building ODE at scale
+                    </h2>
+
+                </div>
+
+                <span class="section-meta">
+                    Internal view
+                </span>
+
+            </div>
+
+
+          
+
+
+            <div class="client-grid">
+
+                <article>
+        <div class="company-logo">
+            <img
+                src="logos/databricks.png"
+                alt="Databricks logo"
+            />
+        </div>
+
+        <h3>Databricks</h3>
+
+        <p>
+            Initial batch of ODE demands being worked upon.
+        </p>
+    </article>
+
+
+                <article>
+        <div class="company-logo">
+            <img
+                src="logos/fortive.png"
+                alt="Fortive logo"
+            />
+        </div>
+
+        <h3>Fortive</h3>
+
+        <p>
+            Evolving demand with Sogeti US · West Division.
+        </p>
+    </article>
+
+
+                <article>
+        <div class="company-logo">
+            <img
+                src="logos/volvo.png"
+                alt="Volvo Group logo"
+            />
+        </div>
+
+        <h3>Volvo Group</h3>
+
+        <p>
+            Demand emerging for the ODE capability.
+        </p>
+    </article>
+
+
+                 <article>
+        <div class="company-logo">
+            <img
+                src="logos/postnl.png"
+                alt="PostNL logo"
+            />
+        </div>
+
+        <h3>PostNL</h3>
+
+        <p>
+            Conversations with India Delivery Lead to assess demand.
+        </p>
+    </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             11. FOOTER
+        ================================================== -->
+
+        <footer>
+
+            <span>
+                ODE Fulfilment · Sogeti India
+            </span>
+
+            <span>
+                Company Confidential · 2026
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script>
+
+    /* =====================================================
+       PATHWAY SELECTION
+    ====================================================== */
+
+    const pathwayCards =
+        document.querySelectorAll(".selectable-path");
+
+    const selectedPathway =
+        document.getElementById("selectedPathway");
+
+
+    const pathwayData = {
+
+        engineering: {
+            title: "Engineering → ODE",
+            text:
+                "Your engineering foundation is the starting point. " +
+                "Focus on Applied AI, Agentic Build, AI Patterns & Evals, " +
+                "Client Discovery and Communications & Ownership.",
+            tags: [
+                "Applied AI",
+                "Agentic Build",
+                "AI Evals",
+                "Client Discovery"
+            ]
+        },
+
+        data: {
+            title: "Data → ODE",
+            text:
+                "Your data and pipeline capabilities provide a strong base. " +
+                "Focus on Applied AI, Agentic Build, Cloud Deployment, " +
+                "AI Patterns & Evals and Client Discovery.",
+            tags: [
+                "Applied AI",
+                "Agentic Build",
+                "Cloud Deploy",
+                "Client Discovery"
+            ]
+        },
+
+        architecture: {
+            title: "Architecture → ODE",
+            text:
+                "Your architecture and client capabilities provide a strong " +
+                "foundation. Add hands-on engineering, Applied AI, Agentic " +
+                "Build and AI evaluation capabilities.",
+            tags: [
+                "SW Engineering",
+                "Applied AI",
+                "Agentic Build",
+                "AI Evals"
+            ]
+        },
+
+        consulting: {
+            title: "Consulting → ODE",
+            text:
+                "Your client relationship and ownership capabilities are " +
+                "valuable starting blocks. Focus on engineering, data, AI, " +
+                "agentic development and cloud deployment.",
+            tags: [
+                "SW Engineering",
+                "Data",
+                "Applied AI",
+                "Cloud Deploy"
+            ]
+        }
+
+    };
+
+
+    pathwayCards.forEach(card => {
+
+        card.addEventListener("click", () => {
+
+            pathwayCards.forEach(item =>
+                item.classList.remove("selected")
+            );
+
+            card.classList.add("selected");
+
+            const profile =
+                card.dataset.profile;
+
+            const data =
+                pathwayData[profile];
+
+            selectedPathway.innerHTML = `
+
+                <div class="selected-pathway-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <span class="eyebrow">
+                        Selected pathway
+                    </span>
+
+                    <h3>
+                        ${data.title}
+                    </h3>
+
+                    <p>
+                        ${data.text}
+                    </p>
+
+                    <div class="recommendation-tags">
+
+                        ${data.tags
+                            .map(tag =>
+                                `<span>${tag}</span>`
+                            )
+                            .join("")
+                        }
+
+                    </div>
+
+                </div>
+
+            `;
+
+        });
+
+    });
+
+
+
+    /* =====================================================
+       GAP MATRIX PROFILE
+    ====================================================== */
+
+    const profileButtons =
+        document.querySelectorAll(".profile-btn");
+
+    const matrixRows =
+        document.querySelectorAll(".matrix tbody tr");
+
+    const recommendationTitle =
+        document.getElementById("recommendationTitle");
+
+    const recommendationText =
+        document.getElementById("recommendationText");
+
+    const recommendationTags =
+        document.getElementById("recommendationTags");
+
+
+    const recommendations = {
+
+        engineering: {
+            title:
+                "Recommended modules for Software Engineer",
+
+            text:
+                "Focus on Applied AI, Agentic Build, AI Patterns & Evals, " +
+                "Client Discovery and Communications & Ownership.",
+
+            tags: [
+                "Applied AI",
+                "Agentic Build",
+                "AI Evals",
+                "Client Discovery",
+                "Ownership"
+            ]
+        },
+
+        data: {
+            title:
+                "Recommended modules for Data Engineer",
+
+            text:
+                "Your data foundation is already strong. Build Applied AI, " +
+                "Agentic Build, Cloud Deployment, AI Evals and Client Discovery.",
+
+            tags: [
+                "Applied AI",
+                "Agentic Build",
+                "Cloud Deploy",
+                "AI Evals"
+            ]
+        },
+
+        ml: {
+            title:
+                "Recommended modules for ML Engineer",
+
+            text:
+                "Build stronger software engineering, cloud deployment, " +
+                "client discovery and ownership capabilities around your ML foundation.",
+
+            tags: [
+                "SW Engineering",
+                "Cloud Deploy",
+                "Client Discovery",
+                "Ownership"
+            ]
+        },
+
+        architecture: {
+            title:
+                "Recommended modules for Solution Architect",
+
+            text:
+                "Focus on hands-on engineering, Applied AI, Agentic Build " +
+                "and AI Patterns & Evals while extending your existing client skills.",
+
+            tags: [
+                "SW Engineering",
+                "Applied AI",
+                "Agentic Build",
+                "AI Evals"
+            ]
+        },
+
+        consulting: {
+            title:
+                "Recommended modules for Consultant",
+
+            text:
+                "Build engineering, data, AI, agentic development, cloud " +
+                "deployment and AI evaluation capabilities around your client foundation.",
+
+            tags: [
+                "Engineering",
+                "Data",
+                "Applied AI",
+                "Agentic Build",
+                "Cloud"
+            ]
+        }
+
+    };
+
+
+    function updateRecommendation(profile) {
+
+        const data =
+            recommendations[profile];
+
+        recommendationTitle.textContent =
+            data.title;
+
+        recommendationText.textContent =
+            data.text;
+
+        recommendationTags.innerHTML =
+            data.tags
+                .map(tag =>
+                    `<span>${tag}</span>`
+                )
+                .join("");
+
+
+        matrixRows.forEach(row => {
+
+            row.classList.remove("highlighted");
+
+            if (row.dataset.row === profile) {
+                row.classList.add("highlighted");
+            }
+
+        });
+
+    }
+
+
+    profileButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            profileButtons.forEach(item =>
+                item.classList.remove("active")
+            );
+
+            button.classList.add("active");
+
+            updateRecommendation(
+                button.dataset.profile
+            );
+
+        });
+
+    });
+
+
+    updateRecommendation("engineering");
+
+
+
+    /* =====================================================
+       FAQ ACCORDION
+    ====================================================== */
+
+    const faqQuestions =
+        document.querySelectorAll(".faq-question");
+
+
+    faqQuestions.forEach(question => {
+
+        question.addEventListener("click", () => {
+
+            const item =
+                question.closest(".faq-item");
+
+            const isOpen =
+                item.classList.contains("open");
+
+
+            document
+                .querySelectorAll(".faq-item")
+                .forEach(other => {
+                    other.classList.remove("open");
+                });
+
+
+            if (!isOpen) {
+                item.classList.add("open");
+            }
+
+        });
+
+    });
+
+
+
+    /* =====================================================
+       ACTIVE SIDEBAR NAVIGATION
+    ====================================================== */
+
+    const sections =
+        document.querySelectorAll("section[id]");
+
+    const navItems =
+        document.querySelectorAll(".nav-item");
+
+
+    window.addEventListener("scroll", () => {
+
+        let current = "";
+
+        sections.forEach(section => {
+
+            const sectionTop =
+                section.offsetTop - 180;
+
+            if (
+                window.scrollY >= sectionTop
+            ) {
+                current =
+                    section.getAttribute("id");
+            }
+
+        });
+
+
+        navItems.forEach(item => {
+
+            item.classList.remove("active");
+
+            if (
+                item.getAttribute("href") ===
+                "#" + current
+            ) {
+                item.classList.add("active");
+            }
+
+        });
+
+    });
+
+
+
+    /* =====================================================
+       SEARCH
+    ====================================================== */
+
+    const searchInput =
+        document.querySelector(".search input");
+
+
+    searchInput.addEventListener("keyup", event => {
+
+        if (event.key === "Enter") {
+
+            const query =
+                searchInput.value
+                    .toLowerCase()
+                    .trim();
+
+            if (!query) return;
+
+
+            const searchableSections =
+                document.querySelectorAll(
+                    "section"
+                );
+
+
+            let found = false;
+
+
+            searchableSections.forEach(section => {
+
+                if (
+                    !found &&
+                    section.innerText
+                        .toLowerCase()
+                        .includes(query)
+                ) {
+
+                    section.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                    found = true;
+
+                }
+
+            });
+
+        }
+
+    });
+
+
+
+    /* =====================================================
+       MEET THE FAMILY / BATCH 1
+    ====================================================== */
+
+    const meetFamilyBtn =
+        document.getElementById("meetFamilyBtn");
+
+    const familyDetails =
+        document.getElementById("familyDetails");
+
+    const batch1Card =
+        document.getElementById("batch1Card");
+
+    const batch1Students =
+        document.getElementById("batch1Students");
+
+
+    function openFamilyDetails() {
+
+        if (!familyDetails || !meetFamilyBtn) return;
+
+        const isOpen =
+            !familyDetails.hasAttribute("hidden");
+
+        if (isOpen) {
+            familyDetails.setAttribute("hidden", "");
+            meetFamilyBtn.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+            return;
+        }
+
+        familyDetails.removeAttribute("hidden");
+        meetFamilyBtn.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+        setTimeout(() => {
+            batch1Card?.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        }, 50);
+
+    }
+
+
+    function toggleBatch1() {
+
+        if (!batch1Card || !batch1Students) return;
+
+        const isOpen =
+            batch1Card.classList.toggle("expanded");
+
+        batch1Students.classList.toggle(
+            "visible",
+            isOpen
+        );
+
+        batch1Card.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
+
+        batch1Students.setAttribute(
+            "aria-hidden",
+            String(!isOpen)
+        );
+
+        if (isOpen) {
+            setTimeout(() => {
+                batch1Students.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }, 100);
+        }
+
+    }
+
+
+    if (meetFamilyBtn) {
+
+        meetFamilyBtn.addEventListener(
+            "click",
+            openFamilyDetails
+        );
+
+    }
+
+
+    if (batch1Card) {
+
+        batch1Card.addEventListener(
+            "click",
+            toggleBatch1
+        );
+
+        batch1Card.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Enter" ||
+                    event.key === " "
+                ) {
+
+                    event.preventDefault();
+                    toggleBatch1();
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+
+    /* =====================================================
+       STUDENT CATEGORY FILTERS
+    ====================================================== */
+
+    const studentFilters =
+        document.querySelectorAll(".student-filter");
+
+    const studentCards =
+        document.querySelectorAll(".student-card");
+
+    studentFilters.forEach(filterButton => {
+
+        filterButton.addEventListener("click", () => {
+
+            const selectedCategory =
+                filterButton.dataset.filter;
+
+            studentFilters.forEach(button => {
+                const isActive = button === filterButton;
+                button.classList.toggle("active", isActive);
+                button.setAttribute("aria-pressed", String(isActive));
+            });
+
+            studentCards.forEach(card => {
+                const cardCategory = card.dataset.category;
+                const shouldShow =
+                    selectedCategory === "all" ||
+                    cardCategory === selectedCategory;
+
+                card.classList.toggle(
+                    "is-filtered-out",
+                    !shouldShow
+                );
+            });
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
